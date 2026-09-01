@@ -4,6 +4,7 @@ function App() {
 
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
 
@@ -22,6 +23,12 @@ function App() {
       .then(data => {
         setSelectedCustomer(data);
       });
+
+    fetch(`http://localhost:8080/api/customers/${id}/vehicles`)
+        .then(response => response.json())
+        .then(data => {
+            setVehicles(data);
+        });
   }
 
   return (
@@ -36,7 +43,7 @@ function App() {
           </button>
         </div>
       ))}
-  
+
     {selectedCustomer && (
       <div>
         <h2>Customer detail</h2>
@@ -48,7 +55,17 @@ function App() {
         <p>
           Phone: {selectedCustomer.phone}
         </p>
+        <h2>Vehicles</h2>
+        {vehicles.map(vehicle => (
+            <div key={vehicle.id}>
+                {vehicle.brand} {vehicle.model} - {vehicle.licensePlate}
+            </div>
+        ))}
+
       </div>
+
+
+
     )}
 
     </div>
