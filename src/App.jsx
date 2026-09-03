@@ -103,6 +103,15 @@ function App() {
             <p>
                 Last service: {selectedVehicle.lastServiceDate}
             </p>
+
+            <h3>Service records</h3>
+
+            {selectedVehicle.serviceRecords.map(record => (
+                        <div key={record.id}>
+                            {record.serviceDate} - {record.description} - {record.price} €
+                        </div>
+                    ))}
+
         </div>
     )}
 
