@@ -112,6 +112,14 @@ function App() {
                         </div>
                     ))}
 
+            <h3>Appointments</h3>
+
+            {selectedVehicle.appointments.map(appointment => (
+                <div key={appointment.id}>
+                    {appointment.appointmentDate} - {appointment.status} - {appointment.note}
+                </div>
+            ))}
+
         </div>
     )}
 
