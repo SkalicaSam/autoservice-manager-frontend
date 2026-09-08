@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function CustomerDetail() {
 
@@ -45,6 +46,9 @@ function CustomerDetail() {
                     {vehicles.map(vehicle => (
                         <div key={vehicle.id}>
                             {vehicle.brand} {vehicle.model} - {vehicle.licensePlate}
+                            <Link to={`/vehicles/${vehicle.id}`}>
+                                Detail
+                            </Link>
                         </div>
                     ))}
 
